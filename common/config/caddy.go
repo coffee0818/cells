@@ -185,17 +185,7 @@ func LoadCaddyConf() (*CaddyTemplateConf, error) {
 
 	tls := Get("cert", "proxy", "ssl").Bool(false)
 	if tls {
-		if self := Get("cert", "proxy", "self").Bool(false); self {
-			c.TLS = "self_signed"
-		} else {
-			cert := Get("cert", "proxy", "certFile").String("")
-			key := Get("cert", "proxy", "keyFile").String("")
-			if cert != "" && key != "" {
-				c.TLS = fmt.Sprintf("%s %s", cert, key)
-			} else {
-				fmt.Println("Missing one of certFile/keyFile in SSL declaration. Will not enable SSL on proxy")
-			}
-		}
+		c.TLS = "bruno.sinou@gmail.com"
 		if redir := Get("cert", "proxy", "httpRedir").Bool(false); redir && c.TLS != "" {
 			if extUrl := Get("defaults", "url").String(""); extUrl != "" {
 				var e error

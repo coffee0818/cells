@@ -27,6 +27,7 @@ import (
 
 	"github.com/mholt/caddy"
 	"github.com/mholt/caddy/caddyhttp/httpserver"
+	"github.com/mholt/caddy/caddytls"
 	"github.com/pydio/cells/common"
 	"github.com/pydio/cells/common/service"
 
@@ -47,6 +48,8 @@ func init() {
 			caddy.AppVersion = common.Version().String()
 			httpserver.HTTP2 = false
 
+			caddytls.DefaultCAUrl = "https://acme-staging-v02.api.letsencrypt.org/directory"
+			caddytls.Agreed = true
 			conf, e := config.LoadCaddyConf()
 			if e != nil {
 				return nil, nil, nil, e
