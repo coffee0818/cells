@@ -48,7 +48,7 @@ func init() {
 			caddy.AppVersion = common.Version().String()
 			httpserver.HTTP2 = false
 
-			caddytls.DefaultCAUrl = "https://acme-staging-v02.api.letsencrypt.org/directory"
+			caddytls.DefaultCAUrl = "https://acme-staging-v01.api.letsencrypt.org/directory"
 			caddytls.Agreed = true
 			conf, e := config.LoadCaddyConf()
 			if e != nil {
